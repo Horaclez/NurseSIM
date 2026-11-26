@@ -1,0 +1,39 @@
+# Dependencias y compilaciones locales
+node_modules/
+dist-electron/
+out/
+artifacts/
+
+# Proyecto nativo Android: GitHub Actions lo genera limpio en cada build
+/android/
+.gradle/
+.capacitor/
+local.properties
+
+# Instaladores y paquetes compilados (los publica Actions en Releases)
+*.apk
+*.aab
+*.exe
+*.msi
+*.dmg
+*.AppImage
+*.blockmap
+
+# Firmas y secretos
+*.keystore
+*.jks
+.env
+.env.*
+
+# Basura del sistema
+*.log
+.DS_Store
+Thumbs.db
+
+# Estos archivos SÍ deben subirse (los necesita la compilación)
+!/.github/
+!/www/
+!/build/
+!/build/icon.ico
+!/build/icon.png
+!/assets/

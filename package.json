@@ -1,0 +1,74 @@
+{
+  "name": "simulador-enfermeria-chile",
+  "productName": "Simulador de Enfermería Chile",
+  "version": "1.0.0",
+  "description": "Simulador de práctica clínica para enfermería (Chile). Funciona sin internet.",
+  "main": "electron/main.js",
+  "author": "Tu Nombre <tu@correo.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "web": "serve www -l 8080",
+    "electron:start": "electron .",
+    "electron:dist": "electron-builder --win nsis portable --x64 --publish never",
+    "android:assets": "capacitor-assets generate --android",
+    "android:add": "cap add android",
+    "android:sync": "cap sync android",
+    "android:open": "cap open android",
+    "android:debug": "cd android && gradlew assembleDebug"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@capacitor/android": "^6.2.1",
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^6.2.1",
+    "@capacitor/core": "^6.2.1",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "serve": "^14.2.4"
+  },
+  "build": {
+    "appId": "cl.simulador.enfermeria",
+    "productName": "Simulador de Enfermería Chile",
+    "directories": {
+      "output": "dist-electron",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**/*",
+      "www/**/*",
+      "build/icon.png",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Simulador de Enfermería",
+      "artifactName": "Instalador-Simulador-Enfermeria-Chile-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Simulador-Enfermeria-Chile-${version}-portable.${ext}"
+    }
+  }
+}
